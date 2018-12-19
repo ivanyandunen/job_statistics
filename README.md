@@ -10,9 +10,12 @@ Python 3 has to be installed. You might have to run python3 instead of python de
 pip install -r requirements.txt
 ```
 
-To use SuperJob API it is necessary to [register](https://api.superjob.ru/register/) and get Secret Key(like  `v2.r.11083112.46dc036c279f861230b0607af8233d0235c309bc60072cdbde348f9aae16cce9.303351.1547294661.144e4e65b9ebd7f9fa3ec2ff68188fb8f5088f2a`)
+To use SuperJob API it is necessary to [register](https://api.superjob.ru/register/) and get Secret Key
 
-Save it to file .env in the same directory with the script.(`TOKEN=v2.r.11083112.46dc036c279f861230b0607af8233d0235c309bc60072cdbde348f9aae16cce9.303351.1547294661.144e4e65b9ebd7f9fa3ec2ff68188fb8f5088f2a`).
+like: `v2.r.11083112.46dc036c279f861230b0607af8233d0235c309bc60072cdbde348f9aae16cce9.303351.1547294661.144e4e65b9ebd7f9fa3ec2ff68188fb8f5088f2a`
+
+Save it to file .env in the same directory with the script.
+`TOKEN=v2.r.11083112.46dc036c279f861230b0607af8233d0235c309bc60072cdbde348f9aae16cce9.303351.1547294661.144e4e65b9ebd7f9fa3ec2ff68188fb8f5088f2a`.
 
 Then run `python job_statistics.py`
 
