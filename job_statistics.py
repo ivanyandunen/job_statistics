@@ -76,8 +76,8 @@ def predict_rub_salary(payment_from, payment_to):
         
         
 def get_average_salary(list_of_salaries):
-    if len(list_of_salaries) == 0:
-        return 0
+    if not list_of_salaries:
+        return None
     average_salary = 0
     for salary in list_of_salaries:
         if salary:
@@ -87,7 +87,12 @@ def get_average_salary(list_of_salaries):
     
 def print_table(dict_of_vacancies, title):
     table_data = [
-        ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', 'Средняя зарплата']
+        [
+        'Язык программирования',
+        'Вакансий найдено',
+        'Вакансий обработано',
+        'Средняя зарплата'
+        ]
     ]
     for language in dict_of_vacancies:
         table_data.append((
@@ -101,8 +106,8 @@ def print_table(dict_of_vacancies, title):
 
 
 def get_info_from_HH(dict_of_vacancies):
-    salaries_by_language = []
     for language in dict_of_vacancies.keys():
+        salaries_by_language = []
         dict_of_vacancies[language]['vacancies_found'] = get_number_of_vacancies(language)
         for salary in get_salary_by_language(language):
             salaries_by_language.append(predict_rub_salary(
@@ -111,13 +116,12 @@ def get_info_from_HH(dict_of_vacancies):
             )
         dict_of_vacancies[language]['vacancies_processed'] = len(salaries_by_language)
         dict_of_vacancies[language]['average_salary'] = get_average_salary(salaries_by_language)
-        salaries_by_language = []
     print_table(dict_of_vacancies, 'HeadHunter Saint-Petersburg')
     
 
 def get_info_from_SJ(dict_of_vacancies):
-    salaries_by_language = []
     for language in dict_of_vacancies.keys():
+        salaries_by_language = []
         list_of_vacancies = get_vacancies(token, language)
         dict_of_vacancies[language]['vacancies_found'] = len(list_of_vacancies)
         for vacancy in list_of_vacancies:
@@ -129,7 +133,6 @@ def get_info_from_SJ(dict_of_vacancies):
                 salaries_by_language.append(salary)
         dict_of_vacancies[language]['vacancies_processed'] = len(salaries_by_language)
         dict_of_vacancies[language]['average_salary'] = get_average_salary(salaries_by_language)
-        salaries_by_language = []
     print_table(dict_of_vacancies, 'SuperJob Saint-Petersburg')
 
     
